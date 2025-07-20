@@ -8,6 +8,7 @@ function Navbar() {
       <h2 style={{ display: 'inline-block', marginLeft: '1rem', verticalAlign: 'middle' }}>Learn With Leo</h2>
       <div style={{ marginLeft: '2rem', display: 'inline-block' }}>
         <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
+        <Link to="/browse-activities" style={{ marginRight: '1rem' }}>Activities</Link>
         <Link to="/about">About</Link>
       </div>
     </nav>
