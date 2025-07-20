@@ -1,3 +1,5 @@
+import ProductList from '../components/ProductList';
+
 function BrowseActivities() {
   return (
     <main>
@@ -5,7 +7,7 @@ function BrowseActivities() {
       <p>
         Explore fun activity books and learning resources for kids ages 1-6!
       </p>
-      {/* Book/product list will go here */}
+      <ProductList />
     </main>
   );
 }
