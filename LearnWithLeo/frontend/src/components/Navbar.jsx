@@ -11,7 +11,9 @@ function Navbar() {
         <Link to="/browse-activities" style={{ marginRight: '1rem' }}>Activities</Link>
         <Link to="/browse-stories" style={{ marginRight: '1rem' }}>Stories</Link>
         <Link to="/money-lessons" style={{ marginRight: '1rem' }}>Money Lessons</Link>
-        <Link to="/about">About</Link>
+        <Link to="/about" style={{ marginRight: '1rem' }}>About</Link>
+        <Link to="/login" style={{ marginRight: '1rem' }}>Login</Link>
+        <Link to="/register" style={{ marginRight: '1rem' }}>Register</Link>
       </div>
     </nav>
   );
