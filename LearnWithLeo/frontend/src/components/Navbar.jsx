@@ -18,6 +18,7 @@ function Navbar() {
         <Link to="/contact" style={{ marginRight: '1rem' }}>Contact</Link>
         <Link to="/login" style={{ marginRight: '1rem' }}>Login</Link>
         <Link to="/register" style={{ marginRight: '1rem' }}>Register</Link>
+        <Link to="/admin" style={{ marginRight: '1rem' }}>Admin</Link>
       </div>
     </nav>
   );
