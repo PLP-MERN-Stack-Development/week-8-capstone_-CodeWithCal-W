@@ -13,6 +13,7 @@ function Navbar() {
         <Link to="/money-lessons" style={{ marginRight: '1rem' }}>Money Lessons</Link>
         <Link to="/profile" style={{ marginRight: '1rem' }}>Profile</Link>
         <Link to="/about" style={{ marginRight: '1rem' }}>About</Link>
+        <Link to="/contact" style={{ marginRight: '1rem' }}>Contact</Link>
         <Link to="/login" style={{ marginRight: '1rem' }}>Login</Link>
         <Link to="/register" style={{ marginRight: '1rem' }}>Register</Link>
       </div>
