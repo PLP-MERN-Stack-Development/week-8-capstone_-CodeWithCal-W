@@ -9,6 +9,7 @@ function Navbar() {
       <div style={{ marginLeft: '2rem', display: 'inline-block' }}>
         <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
         <Link to="/browse-activities" style={{ marginRight: '1rem' }}>Activities</Link>
+        <Link to="/browse-stories" style={{ marginRight: '1rem' }}>Stories</Link>
         <Link to="/about">About</Link>
       </div>
     </nav>

@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import BrowseActivities from './pages/BrowseActivities';
 import ProductDetails from './pages/ProductDetails';
+import BrowseStories from './pages/BrowseStories';
 import './styles/main.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/browse-activities" element={<BrowseActivities />} />
+        <Route path="/browse-stories" element={<BrowseStories />} />
         <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
     </Router>
