@@ -1,3 +1,4 @@
+import NotFound from './pages/NotFound';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -27,6 +28,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
