@@ -10,6 +10,7 @@ function Navbar() {
         <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
         <Link to="/browse-activities" style={{ marginRight: '1rem' }}>Activities</Link>
         <Link to="/browse-stories" style={{ marginRight: '1rem' }}>Stories</Link>
+        <Link to="/money-lessons" style={{ marginRight: '1rem' }}>Money Lessons</Link>
         <Link to="/about">About</Link>
       </div>
     </nav>
