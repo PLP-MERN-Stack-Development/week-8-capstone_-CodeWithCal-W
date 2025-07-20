@@ -1,3 +1,4 @@
+import Progress from './pages/Progress';
 import Subscription from './pages/Subscription';
 import Footer from './components/Footer';
 import NotFound from './pages/NotFound';
@@ -31,6 +32,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/subscription" element={<Subscription />} />
+        <Route path="/progress" element={<Progress />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
