@@ -1,13 +1,17 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import './styles/main.css';
 
 function App() {
   return (
-    <div>
+    <Router>
       <Navbar />
-      <Home />
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* More routes will be added here as you build more pages */}
+      </Routes>
+    </Router>
   );
 }
 
