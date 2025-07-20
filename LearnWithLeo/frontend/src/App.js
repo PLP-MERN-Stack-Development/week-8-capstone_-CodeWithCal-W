@@ -8,6 +8,7 @@ import BrowseStories from './pages/BrowseStories';
 import MoneyLessons from './pages/MoneyLessons';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Profile from './pages/Profile';
 import './styles/main.css';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/money-lessons" element={<MoneyLessons />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
     </Router>
