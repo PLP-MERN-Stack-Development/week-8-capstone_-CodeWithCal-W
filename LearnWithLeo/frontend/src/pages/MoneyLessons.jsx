@@ -1,18 +1,33 @@
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 function MoneyLessons() {
-  // Temporary sample lessons
-  const lessons = [
-    { id: 1, title: "Saving Basics", summary: "Learn why saving is important." },
-    { id: 2, title: "Needs vs Wants", summary: "Understand the difference between needs and wants." },
-    { id: 3, title: "Smart Spending", summary: "Tips for making good choices with money." },
-  ];
+  const [lessons, setLessons] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/lessons')
+      .then(res => res.json())
+      .then(data => {
+        setLessons(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <main>
       <h1>Money Management Lessons</h1>
       <ul>
         {lessons.map(lesson => (
-          <li key={lesson.id}>
-            <strong>{lesson.title}</strong>
+          <li key={lesson._id}>
+            <img src={lesson.image} alt={lesson.title} style={{ width: '100px', height: '100px', objectFit: 'cover' }} />
+            <br />
+            <strong>
+              <Link to={`/lesson/${lesson._id}`}>{lesson.title}</Link>
+            </strong>
             <br />
             <span>{lesson.summary}</span>
           </li>

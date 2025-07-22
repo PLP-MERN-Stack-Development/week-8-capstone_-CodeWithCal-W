@@ -1,3 +1,4 @@
+import LessonDetails from './pages/LessonDetails';
 import StoryDetails from './pages/StoryDetails';
 import Admin from './pages/Admin';
 import Progress from './pages/Progress';
@@ -37,6 +38,7 @@ function App() {
         <Route path="/progress" element={<Progress />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/story/:id" element={<StoryDetails />} />
+        <Route path="/lesson/:id" element={<LessonDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
