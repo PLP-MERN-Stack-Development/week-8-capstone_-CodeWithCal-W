@@ -17,12 +17,14 @@ function ProductList() {
 
   if (loading) return <p>Loading...</p>;
 
-  return (
+    return (
     <section>
       <h2>Available Books & Activities</h2>
       <ul>
         {products.map(product => (
           <li key={product._id}>
+            <img src={product.image} alt={product.title} style={{ width: '100px', height: '100px', objectFit: 'cover' }} />
+            <br />
             <strong>
               <Link to={`/product/${product._id}`}>{product.title}</Link>
             </strong>

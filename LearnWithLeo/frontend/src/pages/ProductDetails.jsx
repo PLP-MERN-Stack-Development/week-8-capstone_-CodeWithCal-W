@@ -22,6 +22,7 @@ function ProductDetails() {
   return (
     <main>
       <h1>{product.title}</h1>
+      <img src={product.image} alt={product.title} style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
       <p>{product.description}</p>
       <p>Age: {product.age}</p>
       <p>Type: {product.type}</p>
