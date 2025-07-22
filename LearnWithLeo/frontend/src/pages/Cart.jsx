@@ -1,9 +1,18 @@
 import { useCart } from '../context/CartContext';
+import { useNavigate } from 'react-router-dom';
 
 function Cart() {
   const { cart, removeFromCart, clearCart } = useCart();
+  const navigate = useNavigate();
 
   const total = cart.reduce((sum, item) => sum + item.quantity * (item.price || 0), 0);
+
+  const handleCheckout = () => {
+    // For now, just clear the cart and show a message
+    clearCart();
+    alert('Thank you for your purchase!');
+    navigate('/');
+  };
 
   return (
     <main>
@@ -22,7 +31,7 @@ function Cart() {
           </ul>
           <p><strong>Total:</strong> ${total}</p>
           <button onClick={clearCart}>Clear Cart</button>
-          {/* Checkout button will go here */}
+          <button onClick={handleCheckout}>Checkout</button>
         </>
       )}
     </main>
