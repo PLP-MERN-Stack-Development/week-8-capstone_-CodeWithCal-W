@@ -1,20 +1,23 @@
 import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 function ProductDetails() {
   const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Temporary sample data
-  const products = [
-    { id: 1, title: "Fun with Letters", description: "Learn letters with fun activities!", age: "2-4", type: "Learning Book" },
-    { id: 2, title: "Home Activities", description: "Creative activities for kids at home.", age: "3-6", type: "Activity Book" },
-    { id: 3, title: "Money Smart Kids", description: "Teach kids about money management.", age: "4-6", type: "Money Management" },
-  ];
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/products/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        setProduct(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, [id]);
 
-  const product = products.find(p => p.id === Number(id));
-
-  if (!product) {
-    return <main><h2>Product not found</h2></main>;
-  }
+  if (loading) return <p>Loading...</p>;
+  if (!product) return <p>Product not found.</p>;
 
   return (
     <main>
