@@ -1,3 +1,4 @@
+import PremiumRoute from './components/PremiumRoute';
 import { CartProvider } from './context/CartContext';
 import Cart from './pages/Cart';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -32,7 +33,6 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/browse-activities" element={<BrowseActivities />} />
           <Route path="/browse-stories" element={<BrowseStories />} />
-          <Route path="/money-lessons" element={<MoneyLessons />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
@@ -49,6 +49,14 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/money-lessons"
+            element={
+              <PremiumRoute>
+                <MoneyLessons />
+              </PremiumRoute>
+            }
+          />
           <Route path="/story/:id" element={<StoryDetails />} />
           <Route path="/lesson/:id" element={<LessonDetails />} />
           <Route path="*" element={<NotFound />} />
@@ -60,4 +68,3 @@ function App() {
 }
 
 export default App;
-
