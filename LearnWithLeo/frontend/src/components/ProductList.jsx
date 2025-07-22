@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 function ProductList() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     fetch('http://localhost:5000/api/products')
@@ -17,7 +19,7 @@ function ProductList() {
 
   if (loading) return <p>Loading...</p>;
 
-    return (
+  return (
     <section>
       <h2>Available Books & Activities</h2>
       <ul>
@@ -31,6 +33,8 @@ function ProductList() {
             <br />
             <span>Age: {product.age}</span> <br />
             <span>Type: {product.type}</span>
+            <br />
+            <button onClick={() => addToCart(product)}>Add to Cart</button>
           </li>
         ))}
       </ul>
