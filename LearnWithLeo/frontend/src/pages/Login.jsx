@@ -21,7 +21,7 @@ function Login() {
       if (!res.ok) {
         setError(data.error || (data.errors && data.errors[0]?.msg) || 'Login failed');
       } else {
-        // Optionally store token: localStorage.setItem('token', data.token);
+        localStorage.setItem('token', data.token);
         navigate('/profile');
       }
     } catch {
