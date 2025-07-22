@@ -1,3 +1,4 @@
+import StoryDetails from './pages/StoryDetails';
 import Admin from './pages/Admin';
 import Progress from './pages/Progress';
 import Subscription from './pages/Subscription';
@@ -35,6 +36,7 @@ function App() {
         <Route path="/subscription" element={<Subscription />} />
         <Route path="/progress" element={<Progress />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/story/:id" element={<StoryDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
