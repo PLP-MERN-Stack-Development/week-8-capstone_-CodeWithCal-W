@@ -1,3 +1,4 @@
+import ProtectedRoute from './components/ProtectedRoute';
 import LessonDetails from './pages/LessonDetails';
 import StoryDetails from './pages/StoryDetails';
 import Admin from './pages/Admin';
@@ -36,7 +37,14 @@ function App() {
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/subscription" element={<Subscription />} />
         <Route path="/progress" element={<Progress />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <Admin />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/story/:id" element={<StoryDetails />} />
         <Route path="/lesson/:id" element={<LessonDetails />} />
         <Route path="*" element={<NotFound />} />
