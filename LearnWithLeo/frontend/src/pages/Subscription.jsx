@@ -4,10 +4,21 @@ function Subscription() {
   const [selected, setSelected] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
-  const handleSubscribe = () => {
+  const handleSubscribe = async () => {
     if (!selected) return alert('Please select a plan.');
-    setSubscribed(true);
-    localStorage.setItem('subscribed', selected); // Save plan to localStorage
+    const token = localStorage.getItem('token');
+    const res = await fetch('http://localhost:5000/api/users/subscribe', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    const data = await res.json();
+    if (res.ok) {
+      setSubscribed(true);
+      localStorage.setItem('subscribed', selected);
+      alert('Subscription successful!');
+    } else {
+      alert(data.error || 'Subscription failed');
+    }
   };
 
   return (

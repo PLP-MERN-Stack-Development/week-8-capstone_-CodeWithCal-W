@@ -18,4 +18,17 @@ router.post('/purchase/:productId', auth, async (req, res) => {
   }
 });
 
+// Subscribe user
+router.post('/subscribe', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId);
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    user.isSubscribed = true;
+    await user.save();
+    res.json({ message: 'Subscription successful!' });
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 module.exports = router;
