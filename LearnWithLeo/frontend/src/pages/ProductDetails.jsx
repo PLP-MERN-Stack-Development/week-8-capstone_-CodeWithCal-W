@@ -43,14 +43,26 @@ function ProductDetails() {
   return (
     <main>
       <h1>{product.title}</h1>
-      <img src={product.image} alt={product.title} style={{ width: '200px' }} />
+      <img
+        src={product.image ? `http://localhost:5000${product.image}` : '/placeholder.png'}
+        alt={product.title}
+        style={{
+          width: '260px',
+          height: '320px',
+          objectFit: 'contain',
+          borderRadius: 10,
+          background: '#fff',
+          marginBottom: 16
+        }}
+        onError={e => { e.target.src = '/placeholder.png'; }}
+      />
       <p>{product.description}</p>
       <p>Age: {product.age}</p>
       <p>Type: {product.type}</p>
       <p>Price: ${product.price || 0}</p>
       {canAccess ? (
         <div>
-          <p>You own this product! (Show download/access button here)</p>
+          <p>You own this product! (I plan to Show download/access button here)</p>
           <button onClick={() => alert('Download started!')}>Download</button>
         </div>
       ) : (
