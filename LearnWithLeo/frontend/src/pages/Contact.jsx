@@ -3,15 +3,30 @@ import React, { useState } from 'react';
 function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    // Here you could send the form to your backend or an email service
-    setSubmitted(true);
+    setError('');
+    try {
+      const res = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Something went wrong.');
+      }
+      setSubmitted(true);
+      setForm({ name: '', email: '', message: '' });
+    } catch (err) {
+      setError(err.message || 'Could not send message. Please try again.');
+    }
   };
 
   return (
@@ -26,6 +41,7 @@ function Contact() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+          {error && <div style={{ color: 'red' }}>{error}</div>}
           <input
             type="text"
             name="name"
