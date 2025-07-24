@@ -1,7 +1,21 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo-white.png';
 
 function Navbar() {
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      fetch('http://localhost:5000/api/auth/me', {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+        .then(res => res.json())
+        .then(user => setIsSubscribed(user.isSubscribed));
+    }
+  }, []);
+
   return (
     <nav>
       <img src={logo} alt="Learn With Leo Logo" style={{ height: '60px', verticalAlign: 'middle' }} />
@@ -20,6 +34,7 @@ function Navbar() {
         <Link to="/register" style={{ marginRight: '1rem' }}>Register</Link>
         <Link to="/admin" style={{ marginRight: '1rem' }}>Admin</Link>
         <Link to="/cart" style={{ marginRight: '1rem' }}>Cart</Link>
+        {isSubscribed && <span style={{ color: 'green', marginLeft: 10 }}>Premium</span>}
       </div>
     </nav>
   );

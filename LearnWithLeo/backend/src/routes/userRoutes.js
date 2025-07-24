@@ -31,4 +31,18 @@ router.post('/subscribe', auth, async (req, res) => {
   }
 });
 
+// Cancel subscription
+router.post('/cancel-subscription', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId);
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    user.isSubscribed = false;
+    await user.save();
+    res.json({ message: 'Subscription cancelled!' });
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 module.exports = router;
+
