@@ -22,9 +22,26 @@ function LessonDetails() {
   return (
     <main>
       <h1>{lesson.title}</h1>
-      <img src={lesson.image} alt={lesson.title} style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
-      <p>{lesson.summary}</p>
-      <p>{lesson.content}</p>
+      <img
+        src={lesson.image ? `http://localhost:5000${lesson.image}` : '/placeholder.png'}
+        alt={lesson.title}
+        style={{
+          width: '260px',
+          height: '320px',
+          objectFit: 'contain',
+          borderRadius: 10,
+          background: '#fff',
+          marginBottom: 16,
+          display: 'block',
+          marginLeft: 'auto',
+          marginRight: 'auto'
+        }}
+        onError={e => { e.target.src = '/placeholder.png'; }}
+      />
+      <p style={{ fontWeight: 'bold', color: '#555' }}>{lesson.summary}</p>
+      <div style={{ marginTop: '1rem', color: '#333', fontSize: '1.1rem', lineHeight: 1.6 }}>
+        {lesson.content}
+      </div>
     </main>
   );
 }
