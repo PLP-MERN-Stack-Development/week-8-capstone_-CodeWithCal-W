@@ -22,9 +22,26 @@ function StoryDetails() {
   return (
     <main>
       <h1>{story.title}</h1>
-      <img src={story.image} alt={story.title} style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
-      <p>{story.summary}</p>
-      <p>{story.content}</p>
+      <img
+        src={story.image ? `http://localhost:5000${story.image}` : '/placeholder.png'}
+        alt={story.title}
+        style={{
+          width: '260px',
+          height: '320px',
+          objectFit: 'contain',
+          borderRadius: 10,
+          background: '#fff',
+          marginBottom: 16,
+          display: 'block',
+          marginLeft: 'auto',
+          marginRight: 'auto'
+        }}
+        onError={e => { e.target.src = '/placeholder.png'; }}
+      />
+      <p style={{ fontWeight: 'bold', color: '#555' }}>{story.summary}</p>
+      <div style={{ marginTop: '1rem', color: '#333', fontSize: '1.1rem', lineHeight: 1.6 }}>
+        {story.content}
+      </div>
     </main>
   );
 }

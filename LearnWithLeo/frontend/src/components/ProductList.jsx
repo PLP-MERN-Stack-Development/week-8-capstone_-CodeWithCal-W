@@ -22,6 +22,16 @@ function ProductList() {
   return (
     <section>
       <h2>Available Books & Activities</h2>
+      <div style={{ marginBottom: '2rem', color: '#444', fontSize: '1.1rem', maxWidth: 600 }}>
+        <p>
+          Explore our growing library of fun, educational activity books and flashcards!
+          Each resource is designed to spark curiosity, creativity, and learning for young children.
+          Browse, preview, and download engaging materials for tracing, coloring, counting, matching, and more.
+        </p>
+        <p>
+          New activities and resources are added regularly—check back often for fresh content!
+        </p>
+      </div>
       <ul
         style={{
           display: 'flex',
