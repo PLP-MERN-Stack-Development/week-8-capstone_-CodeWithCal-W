@@ -51,26 +51,77 @@ function Profile() {
   if (!user) return <p>Loading...</p>;
 
   return (
-    <main>
-      <h1>Profile</h1>
-      <p>Name: {user.name}</p>
-      <p>Email: {user.email}</p>
-      <p>
-        Subscription Status:{' '}
+    <main style={{
+      minHeight: '80vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'linear-gradient(135deg, #e0f7fa 0%, #fff 100%)'
+    }}>
+      <section style={{
+        background: '#fff',
+        padding: '2rem 2.5rem',
+        borderRadius: 12,
+        boxShadow: '0 2px 16px rgba(60, 170, 169, 0.08)',
+        maxWidth: 400,
+        width: '100%'
+      }}>
+        <h1 style={{ color: '#3aafa9', marginBottom: 12, textAlign: 'center' }}>Your Profile</h1>
+        <p style={{ color: '#555', fontSize: '1rem', marginBottom: 18, textAlign: 'center' }}>
+          Welcome, <strong>{user.name}</strong>! Here you can view your account details and manage your subscription.
+        </p>
+        <div style={{ marginBottom: 18 }}>
+          <p><strong>Name:</strong> {user.name}</p>
+          <p><strong>Email:</strong> {user.email}</p>
+          <p>
+            <strong>Subscription Status:</strong>{' '}
+            {user.isSubscribed ? (
+              <span style={{ color: 'green', fontWeight: 'bold' }}>Active</span>
+            ) : (
+              <span style={{ color: 'red', fontWeight: 'bold' }}>Not Subscribed</span>
+            )}
+          </p>
+        </div>
         {user.isSubscribed ? (
-          <span style={{ color: 'green' }}>Active</span>
+          <button
+            onClick={handleCancel}
+            style={{
+              width: '100%',
+              background: '#e57373',
+              color: '#fff',
+              border: 'none',
+              borderRadius: 6,
+              padding: '0.7rem',
+              fontSize: '1rem',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              marginBottom: 8
+            }}
+          >
+            Cancel Subscription
+          </button>
         ) : (
-          <span style={{ color: 'red' }}>Not Subscribed</span>
+          <button
+            onClick={handleRenew}
+            style={{
+              width: '100%',
+              background: '#3aafa9',
+              color: '#fff',
+              border: 'none',
+              borderRadius: 6,
+              padding: '0.7rem',
+              fontSize: '1rem',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              marginBottom: 8
+            }}
+          >
+            Renew Subscription
+          </button>
         )}
-      </p>
-      {user.isSubscribed && (
-        <button onClick={handleCancel}>Cancel Subscription</button>
-      )}
-      {!user.isSubscribed && (
-        <button onClick={handleRenew}>Renew Subscription</button>
-      )}
+      </section>
     </main>
   );
 }
 
-export default Profile;
+export default Profile; 
