@@ -91,6 +91,7 @@ function Navbar() {
           alignItems: 'center',
           gap: '1.2rem'
         }}>
+          {/* Main navigation links */}
           <Link to="/" style={navLinkStyle(location.pathname === '/')}>Home</Link>
           <Link to="/browse-activities" style={navLinkStyle(location.pathname === '/browse-activities')}>Activities</Link>
           <Link to="/browse-stories" style={navLinkStyle(location.pathname === '/browse-stories')}>Stories</Link>
@@ -117,10 +118,13 @@ function Navbar() {
               </span>
             )}
           </Link>
+          {/* Account-related links */}
           {isLoggedIn ? (
             <>
               <Link to="/profile" style={navLinkStyle(location.pathname === '/profile')}>Profile</Link>
               <Link to="/subscription" style={navLinkStyle(location.pathname === '/subscription')}>Subscription</Link>
+              {isAdmin && <Link to="/admin" style={navLinkStyle(location.pathname === '/admin')}>Admin</Link>}
+              {isSubscribed && <span style={{ color: '#ffd700', marginLeft: 10, fontWeight: 'bold' }}>Premium</span>}
               <button
                 onClick={handleLogout}
                 style={{
@@ -135,8 +139,6 @@ function Navbar() {
               >
                 Logout
               </button>
-              {isAdmin && <Link to="/admin" style={navLinkStyle(location.pathname === '/admin')}>Admin</Link>}
-              {isSubscribed && <span style={{ color: '#ffd700', marginLeft: 10, fontWeight: 'bold' }}>Premium</span>}
             </>
           ) : (
             <>
