@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import logo from '../assets/logo-white.png';
+import { useCart } from '../context/CartContext';
 
 function Navbar() {
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -8,6 +9,10 @@ function Navbar() {
   const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const { cart } = useCart();
+
+  // Calculate total cart quantity
+  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -35,7 +40,6 @@ function Navbar() {
     navigate('/');
   };
 
-  // Highlight active link
   function navLinkStyle(active) {
     return {
       color: active ? '#ffd700' : '#fff',
@@ -94,7 +98,22 @@ function Navbar() {
           <Link to="/progress" style={navLinkStyle(location.pathname === '/progress')}>Progress</Link>
           <Link to="/about" style={navLinkStyle(location.pathname === '/about')}>About</Link>
           <Link to="/contact" style={navLinkStyle(location.pathname === '/contact')}>Contact</Link>
-          <Link to="/cart" style={navLinkStyle(location.pathname === '/cart')}>Cart</Link>
+          <Link to="/cart" style={navLinkStyle(location.pathname === '/cart')}>
+            Cart{cartCount > 0 && (
+              <span style={{
+                marginLeft: 6,
+                background: '#fe2c55',
+                color: '#fff',
+                borderRadius: '50%',
+                padding: '2px 8px',
+                fontSize: '0.95rem',
+                fontWeight: 'bold',
+                verticalAlign: 'middle'
+              }}>
+                {cartCount}
+              </span>
+            )}
+          </Link>
           {isLoggedIn ? (
             <>
               <Link to="/profile" style={navLinkStyle(location.pathname === '/profile')}>Profile</Link>
