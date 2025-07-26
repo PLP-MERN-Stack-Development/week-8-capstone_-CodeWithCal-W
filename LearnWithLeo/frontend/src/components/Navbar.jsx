@@ -95,7 +95,10 @@ function Navbar() {
           <Link to="/browse-activities" style={navLinkStyle(location.pathname === '/browse-activities')}>Activities</Link>
           <Link to="/browse-stories" style={navLinkStyle(location.pathname === '/browse-stories')}>Stories</Link>
           <Link to="/money-lessons" style={navLinkStyle(location.pathname === '/money-lessons')}>Money Lessons</Link>
-          <Link to="/progress" style={navLinkStyle(location.pathname === '/progress')}>Progress</Link>
+          {/* Only show Progress link if logged in */}
+          {isLoggedIn && (
+            <Link to="/progress" style={navLinkStyle(location.pathname === '/progress')}>Progress</Link>
+          )}
           <Link to="/about" style={navLinkStyle(location.pathname === '/about')}>About</Link>
           <Link to="/contact" style={navLinkStyle(location.pathname === '/contact')}>Contact</Link>
           <Link to="/cart" style={navLinkStyle(location.pathname === '/cart')}>
