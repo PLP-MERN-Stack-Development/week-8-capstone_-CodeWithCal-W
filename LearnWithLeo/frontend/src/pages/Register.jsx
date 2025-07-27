@@ -54,7 +54,7 @@ function Register() {
       }}>
         <h1 style={{ color: '#3aafa9', marginBottom: 12, textAlign: 'center' }}>Create Your Account</h1>
         <p style={{ color: '#555', fontSize: '1rem', marginBottom: 18, textAlign: 'center' }}>
-          Register to access free and premium activities, track your progress, and join our learning community!
+          Register to access free and premium activities for your kid(s), track progress, and join our learning community!
         </p>
         <form onSubmit={handleSubmit}>
           <input

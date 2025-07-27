@@ -55,7 +55,7 @@ function Login() {
       }}>
         <h1 style={{ color: '#3aafa9', marginBottom: 12, textAlign: 'center' }}>Welcome Back!</h1>
         <p style={{ color: '#555', fontSize: '1rem', marginBottom: 18, textAlign: 'center' }}>
-          Log in to access your account, download activities, and track your learning journey.
+          Log in to access your account, download activities, and track your kid's learning journey.
         </p>
         <form onSubmit={handleSubmit}>
           <input
